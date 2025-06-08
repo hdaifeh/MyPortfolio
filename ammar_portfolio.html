@@ -1,0 +1,564 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ammar Hdaifeh - Research Portfolio</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        .hero {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(20px);
+            border-radius: 20px;
+            padding: 60px 40px;
+            margin-bottom: 40px;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: linear-gradient(90deg, #667eea, #764ba2, #f093fb);
+            animation: shimmer 3s ease-in-out infinite;
+        }
+
+        @keyframes shimmer {
+            0%, 100% { transform: translateX(-100%); }
+            50% { transform: translateX(100%); }
+        }
+
+        .profile-image {
+            width: 120px;
+            height: 120px;
+            border-radius: 50%;
+            margin: 0 auto 30px;
+            background: linear-gradient(45deg, #667eea, #764ba2);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 48px;
+            color: white;
+            font-weight: bold;
+            box-shadow: 0 10px 30px rgba(102, 126, 234, 0.3);
+            animation: float 6s ease-in-out infinite;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-10px); }
+        }
+
+        .hero h1 {
+            font-size: 3.5rem;
+            font-weight: 700;
+            margin-bottom: 10px;
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .hero .tagline {
+            font-size: 1.3rem;
+            color: #666;
+            margin-bottom: 20px;
+            font-weight: 300;
+        }
+
+        .hero .subtitle {
+            font-size: 1.1rem;
+            color: #888;
+            margin-bottom: 30px;
+        }
+
+        .contact-info {
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            flex-wrap: wrap;
+            margin-top: 20px;
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            color: #667eea;
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+
+        .contact-item:hover {
+            transform: translateY(-2px);
+            color: #764ba2;
+        }
+
+        .section {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(20px);
+            border-radius: 20px;
+            padding: 40px;
+            margin-bottom: 30px;
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s ease;
+        }
+
+        .section:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 25px 50px rgba(0, 0, 0, 0.15);
+        }
+
+        .section-title {
+            font-size: 2rem;
+            font-weight: 600;
+            margin-bottom: 30px;
+            color: #333;
+            position: relative;
+            padding-left: 20px;
+        }
+
+        .section-title::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 4px;
+            height: 30px;
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            border-radius: 2px;
+        }
+
+        .research-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin-bottom: 30px;
+        }
+
+        .research-card {
+            background: linear-gradient(135deg, rgba(102, 126, 234, 0.1), rgba(118, 75, 162, 0.1));
+            border-radius: 15px;
+            padding: 25px;
+            border: 1px solid rgba(102, 126, 234, 0.2);
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .research-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 3px;
+            background: linear-gradient(90deg, #667eea, #764ba2);
+        }
+
+        .research-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 35px rgba(102, 126, 234, 0.2);
+        }
+
+        .research-card h3 {
+            color: #667eea;
+            margin-bottom: 15px;
+            font-size: 1.2rem;
+            font-weight: 600;
+        }
+
+        .research-card p {
+            color: #666;
+            line-height: 1.6;
+        }
+
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+        }
+
+        .skill-category {
+            background: linear-gradient(135deg, rgba(102, 126, 234, 0.05), rgba(118, 75, 162, 0.05));
+            border-radius: 12px;
+            padding: 20px;
+            border: 1px solid rgba(102, 126, 234, 0.1);
+        }
+
+        .skill-category h4 {
+            color: #667eea;
+            margin-bottom: 15px;
+            font-weight: 600;
+        }
+
+        .skill-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+        }
+
+        .skill-tag {
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            color: white;
+            padding: 6px 12px;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            font-weight: 500;
+            transition: all 0.3s ease;
+        }
+
+        .skill-tag:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(102, 126, 234, 0.3);
+        }
+
+        .publication {
+            border-left: 4px solid #667eea;
+            padding-left: 20px;
+            margin-bottom: 25px;
+            transition: all 0.3s ease;
+        }
+
+        .publication:hover {
+            border-left-color: #764ba2;
+            transform: translateX(5px);
+        }
+
+        .publication h3 {
+            color: #333;
+            margin-bottom: 8px;
+            font-size: 1.1rem;
+            font-weight: 600;
+        }
+
+        .publication .journal {
+            color: #667eea;
+            font-weight: 500;
+            margin-bottom: 5px;
+        }
+
+        .publication .abstract {
+            color: #666;
+            font-size: 0.95rem;
+            line-height: 1.5;
+        }
+
+        .timeline {
+            position: relative;
+            padding-left: 30px;
+        }
+
+        .timeline::before {
+            content: '';
+            position: absolute;
+            left: 15px;
+            top: 0;
+            bottom: 0;
+            width: 2px;
+            background: linear-gradient(180deg, #667eea, #764ba2);
+        }
+
+        .timeline-item {
+            position: relative;
+            margin-bottom: 30px;
+            background: rgba(102, 126, 234, 0.05);
+            border-radius: 12px;
+            padding: 20px;
+            margin-left: 15px;
+        }
+
+        .timeline-item::before {
+            content: '';
+            position: absolute;
+            left: -22px;
+            top: 25px;
+            width: 12px;
+            height: 12px;
+            background: #667eea;
+            border-radius: 50%;
+            border: 3px solid white;
+            box-shadow: 0 0 0 3px #667eea;
+        }
+
+        .timeline-date {
+            color: #667eea;
+            font-weight: 600;
+            font-size: 0.9rem;
+            margin-bottom: 5px;
+        }
+
+        .timeline-title {
+            font-weight: 600;
+            margin-bottom: 5px;
+            color: #333;
+        }
+
+        .timeline-institution {
+            color: #764ba2;
+            font-weight: 500;
+            margin-bottom: 8px;
+        }
+
+        .timeline-description {
+            color: #666;
+            font-size: 0.95rem;
+            line-height: 1.5;
+        }
+
+        .cta {
+            text-align: center;
+            margin-top: 50px;
+        }
+
+        .cta-button {
+            display: inline-block;
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            color: white;
+            padding: 15px 40px;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            box-shadow: 0 10px 30px rgba(102, 126, 234, 0.3);
+        }
+
+        .cta-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 15px 40px rgba(102, 126, 234, 0.4);
+        }
+
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+            
+            .hero .tagline {
+                font-size: 1.1rem;
+            }
+            
+            .contact-info {
+                flex-direction: column;
+                align-items: center;
+                gap: 15px;
+            }
+            
+            .section {
+                padding: 25px;
+            }
+            
+            .research-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- Hero Section -->
+        <div class="hero">
+            <div class="profile-image">AH</div>
+            <h1>Ammar Hdaifeh</h1>
+            <p class="tagline">Computational Modeler & Sustainability Researcher</p>
+            <p class="subtitle">PhD in Computer Science | System Dynamics & Agent-Based Modeling Expert</p>
+            <div class="contact-info">
+                <a href="mailto:ammar.hdaifeh@inrae.fr" class="contact-item">
+                    📧 ammar.hdaifeh@inrae.fr
+                </a>
+                <a href="mailto:ammar.hdaifeh@gmail.com" class="contact-item">
+                    📧 ammar.hdaifeh@gmail.com
+                </a>
+                <span class="contact-item">
+                    📍 Clermont-Ferrand, France
+                </span>
+                <span class="contact-item">
+                    📱 +33 6 14 13 22 75
+                </span>
+            </div>
+        </div>
+
+        <!-- Research Focus Section -->
+        <div class="section">
+            <h2 class="section-title">Research Focus</h2>
+            <div class="research-grid">
+                <div class="research-card">
+                    <h3>🔄 Circular Economy Modeling</h3>
+                    <p>Developing multi-agent and dynamic metabolic models to represent household behaviors and regional infrastructure flows related to food waste management within circular economy frameworks.</p>
+                </div>
+                <div class="research-card">
+                    <h3>🗂️ System Dynamics</h3>
+                    <p>Creating comprehensive stock-and-flow models to analyze socio-technical interactions between human behavior and infrastructure development in biowaste management systems.</p>
+                </div>
+                <div class="research-card">
+                    <h3>🤖 Agent-Based Modeling</h3>
+                    <p>Transitioning from system dynamics to agent-based models to capture individual-level heterogeneity and social influence in sustainable waste management practices.</p>
+                </div>
+                <div class="research-card">
+                    <h3>🌱 Sustainability Innovation</h3>
+                    <p>Bridging academic research with real-world implementation through innovation diffusion theory and behavioral change modeling for environmental sustainability.</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Key Publication -->
+        <div class="section">
+            <h2 class="section-title">Featured Publication</h2>
+            <div class="publication">
+                <h3>How do human behaviour and infrastructure interact in achieving biowaste policy objectives?</h3>
+                <div class="journal">Journal of Cleaner Production, Volume 510 (2025), Article 145571</div>
+                <div class="abstract">
+                    <strong>Authors:</strong> Ammar Hdaifeh, Sylvie Huet, Jean-Denis Mathias<br><br>
+                    This groundbreaking study explores the crucial dynamic between household behaviors and infrastructure development in biowaste management. Using a novel system dynamics modeling approach applied to the Valtom territory in France, the research reveals key findings: (1) infrastructure development alone is never sufficient to meet policy objectives because behavioral shifts are essential, (2) gradual behavioral intentions speed of change is necessary to meet objectives without infrastructure capacity constraints, and (3) trade-offs exist between different sorting behaviors. The study provides policymakers with insights into conditions necessary for achieving their objectives, accounting for dynamic interactions between human behaviors, population evolution, and infrastructure development.
+                </div>
+            </div>
+        </div>
+
+        <!-- Skills & Expertise -->
+        <div class="section">
+            <h2 class="section-title">Technical Expertise</h2>
+            <div class="skills-grid">
+                <div class="skill-category">
+                    <h4>Modeling & Simulation</h4>
+                    <div class="skill-tags">
+                        <span class="skill-tag">System Dynamics</span>
+                        <span class="skill-tag">Agent-Based Modeling</span>
+                        <span class="skill-tag">Dynamic Metabolic Models</span>
+                        <span class="skill-tag">Multi-Agent Systems</span>
+                        <span class="skill-tag">Stock-and-Flow Models</span>
+                    </div>
+                </div>
+                <div class="skill-category">
+                    <h4>Research Domains</h4>
+                    <div class="skill-tags">
+                        <span class="skill-tag">Circular Economy</span>
+                        <span class="skill-tag">Food Waste Management</span>
+                        <span class="skill-tag">Sustainable AgriFood Systems</span>
+                        <span class="skill-tag">Behavioral Change</span>
+                        <span class="skill-tag">Policy Analysis</span>
+                    </div>
+                </div>
+                <div class="skill-category">
+                    <h4>Technical Methods</h4>
+                    <div class="skill-tags">
+                        <span class="skill-tag">Innovation Diffusion Theory</span>
+                        <span class="skill-tag">Socio-Technical Systems</span>
+                        <span class="skill-tag">Microbial Risk Assessment</span>
+                        <span class="skill-tag">Aquaponics</span>
+                        <span class="skill-tag">Life Cycle Assessment</span>
+                    </div>
+                </div>
+                <div class="skill-category">
+                    <h4>Professional Skills</h4>
+                    <div class="skill-tags">
+                        <span class="skill-tag">Multidisciplinary Approach</span>
+                        <span class="skill-tag">Entrepreneurial Mindset</span>
+                        <span class="skill-tag">Stakeholder Collaboration</span>
+                        <span class="skill-tag">Policy Translation</span>
+                        <span class="skill-tag">Research to Practice</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Education & Experience -->
+        <div class="section">
+            <h2 class="section-title">Academic Journey</h2>
+            <div class="timeline">
+                <div class="timeline-item">
+                    <div class="timeline-date">2023 - Present</div>
+                    <div class="timeline-title">PhD in Computer Science</div>
+                    <div class="timeline-institution">INRAE & Université Clermont Auvergne, France</div>
+                    <div class="timeline-description">Research Focus: Modeling approaches for circular economy in food waste management. Development of multi-agent and dynamic metabolic models to represent household behaviors and regional infrastructure flows.</div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-date">2020 - 2022</div>
+                    <div class="timeline-title">Master's in Process and Bioprocess Engineering</div>
+                    <div class="timeline-institution">IMT Atlantique & Oniris, Nantes, France</div>
+                    <div class="timeline-description">Specialization in Food and Environmental Sciences, focusing on sustainable agrifood systems and bioprocess optimization.</div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-date">2019 - 2020</div>
+                    <div class="timeline-title">Master's in Biology (One Health track)</div>
+                    <div class="timeline-institution">Oniris, Nantes, France</div>
+                    <div class="timeline-description">Interdisciplinary approach to health challenges across humans, animals, and environment.</div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-date">2016 - 2018</div>
+                    <div class="timeline-title">Master's in Food Sciences</div>
+                    <div class="timeline-institution">Tishreen University, Latakia, Syria</div>
+                    <div class="timeline-description">Advanced studies in food technology and safety systems.</div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-date">2010 - 2015</div>
+                    <div class="timeline-title">Engineer's Degree in Agricultural Sciences</div>
+                    <div class="timeline-institution">Tishreen University, Latakia, Syria</div>
+                    <div class="timeline-description">Specialization in Food Sciences with focus on agricultural sustainability and food security.</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Recognition & Roles -->
+        <div class="section">
+            <h2 class="section-title">Recognition & Leadership</h2>
+            <div class="research-grid">
+                <div class="research-card">
+                    <h3>🌍 European Climate Pact Ambassador</h3>
+                    <p><strong>2023/2025</strong> - Officially recognized as a European Climate Pact Ambassador, promoting climate action and sustainability initiatives across Europe.</p>
+                </div>
+                <div class="research-card">
+                    <h3>🤝 European Solidarity Corps</h3>
+                    <p><strong>2022-2023</strong> - Involved in educational activities, sustainability initiatives, and community development projects across various locations in France.</p>
+                </div>
+                <div class="research-card">
+                    <h3>🔬 Research Excellence</h3>
+                    <p>Published in high-impact journals and developing cutting-edge methodologies for sustainable systems modeling and policy analysis.</p>
+                </div>
+                <div class="research-card">
+                    <h3>🌱 Innovation Bridge</h3>
+                    <p>Actively seeking to bridge the gap between academic research and real-world implementation through startup and corporate collaboration.</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Next Steps & Vision -->
+        <div class="section">
+            <h2 class="section-title">Current Research Trajectory</h2>
+            <div class="research-card">
+                <h3>🚀 From System Dynamics to Agent-Based Models</h3>
+                <p>Currently transitioning from system dynamics modeling to agent-based modeling to capture individual-level heterogeneity and social influence in waste management behaviors. This evolution will enable more granular policy guidance and better representation of causal relationships between infrastructure, social networks, and behavioral adoption. The next phase involves developing sophisticated ABM frameworks that complement system dynamic insights by simulating micro-level decision-making and social interactions.</p>
+            </div>
+        </div>
+
+        <!-- Call to Action -->
+        <div class="cta">
+            <a href="#contact" class="cta-button">Let's Collaborate on Sustainable Innovation</a>
+        </div>
+    </div>
+</body>
+</html>
